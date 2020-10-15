@@ -2,31 +2,33 @@
     <div>
     <div class="top-row">
       <div class="top part">
-        <img v-bind:src="robotParts.heads[buttonHeadIndex].src" title="head"/>
+        <!-- v-bind: == : --> 
+    
+        <img :src="robotOrgans.heads.src" title="head"/>
         <button @click="selectPreviousHead()" class="prev-selector">&#9668;</button>
         <button  @click="selectNextHead()"  class="next-selector"> &#9658;</button>
       </div>
     </div>
     <div class="middle-row">
       <div class="left part">
-        <img v-bind:src="robotParts.arms[buttonLeftArmtIndex].src" title="left arm"/>
+        <img v-bind:src="robotOrgans.leftArms.src" title="left arm"/>
         <button  @click="selectPreviousLeftArm()" class="prev-selector">&#9650;</button>
         <button @click="selectNextLeftArm()" class="next-selector">&#9660;</button>
       </div>
       <div class="center part">
-        <img v-bind:src="robotParts.torsos[buttonTorsoIndex].src" title="left arm"/>
+        <img v-bind:src="robotOrgans.torsos.src" title="left arm"/>
         <button  @click="selectPreviousTorso()" class="prev-selector">&#9668;</button>
         <button @click="selectNextTorso()" class="next-selector">&#9658;</button>
       </div>
       <div class="right part">
-        <img v-bind:src="robotParts.arms[buttonRightArmtIndex].src" title="left arm"/>
+        <img v-bind:src="robotOrgans.rightArms.src" title="left arm"/>
         <button  @click="selectPreviousRightArm()" class="prev-selector">&#9650;</button>
         <button @click="selectNextRightArm()" class="next-selector">&#9660;</button>
       </div>
     </div>
     <div class="bottom-row">
       <div class="bottom part">
-        <img v-bind:src="robotParts.bases[buttonBaseIndex].src" title="left arm"/>
+        <img v-bind:src="robotOrgans.bases.src" title="left arm"/>
         <button  @click="selectPreviousBase()" class="prev-selector">&#9668;</button>
         <button @click="selectNextBase()" class="next-selector">&#9658;</button>
       </div>
@@ -53,12 +55,26 @@ export default {
         return {
             robotParts,
             buttonHeadIndex: 0,
-            buttonLeftArmtIndex: 0,
+            buttonLeftArmIndex: 0,
             buttonTorsoIndex: 0,
-            buttonRightArmtIndex: 0,
+            buttonRightArmIndex: 0,
             buttonBaseIndex: 0,
 
         };
+    },
+
+    computed:{
+        robotOrgans(){
+            return{
+                heads: robotParts.heads[this.buttonHeadIndex],
+                leftArms: robotParts.arms[this.buttonLeftArmIndex],
+                torsos: robotParts.torsos[this.buttonTorsoIndex],
+                rightArms: robotParts.arms[this.buttonRightArmIndex],
+                bases: robotParts.bases[this.buttonBaseIndex],
+            };
+            
+
+        }
     },
 
     methods:{
@@ -74,12 +90,12 @@ export default {
         },
         selectNextLeftArm(){
             //console.log('Hi');
-            this.buttonLeftArmtIndex = getIncreasingValidIndex(this.buttonLeftArmtIndex, robotParts.arms.length )
+            this.buttonLeftArmIndex = getIncreasingValidIndex(this.buttonLeftArmIndex, robotParts.arms.length )
              
         },
         selectPreviousLeftArm(){
             //console.log('Hi');
-            this.buttonLeftArmtIndex = getDecreasingValidIndex(this.buttonLeftArmtIndex, robotParts.arms.length )
+            this.buttonLeftArmIndex = getDecreasingValidIndex(this.buttonLeftArmIndex, robotParts.arms.length )
              
         },
         selectNextTorso(){
@@ -94,12 +110,12 @@ export default {
         },
         selectNextRightArm(){
             //console.log('Hi');
-            this.buttonRightArmtIndex = getIncreasingValidIndex(this.buttonRightArmtIndex, robotParts.arms.length )
+            this.buttonRightArmIndex = getIncreasingValidIndex(this.buttonRightArmIndex, robotParts.arms.length )
              
         },
         selectPreviousRightArm(){
             //console.log('Hi');
-            this.buttonRightArmtIndex = getDecreasingValidIndex(this.buttonRightArmtIndex, robotParts.arms.length )
+            this.buttonRightArmIndex = getDecreasingValidIndex(this.buttonRightArmIndex, robotParts.arms.length )
              
         },
         selectNextBase(){
@@ -115,6 +131,7 @@ export default {
 
         
     }
+    // End of Method
 }
 </script>
 
