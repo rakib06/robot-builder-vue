@@ -33,6 +33,7 @@ export default {
   },
   computed: {
     selectedPart() {
+        console.log("Selected Part: ",this.parts[this.selectedPartIndex]);
       return this.parts[this.selectedPartIndex];
     },
   },
@@ -45,7 +46,11 @@ export default {
   methods: {
 
       showPartInfo(){
-          this.$router.push('/parts')
+          // object syntax in order to pass parameter
+          this.$router.push({name:'Parts',
+           params: {id: this.selectedPart.id, 
+            partType: this.selectedPart.type},
+           })
       },
       // Passing data to Parent Component
       emitSelectedPart(){
