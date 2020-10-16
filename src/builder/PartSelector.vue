@@ -8,7 +8,7 @@
            params: {id: this.selectedPart.id, 
             partType: this.selectedPart.type},
            }">
-       <img :src="selectedPart.src" title="arm"/>
+            <img :src="selectedPart.src" title="arm"/>
        </router-link>
       
     
