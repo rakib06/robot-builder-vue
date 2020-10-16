@@ -3,6 +3,7 @@
     
     <div class="preview">
       <CollapsibleSection>
+         <!-- Injecting Content Into Child Component from Parent component -->
         <div class="preview-content">
           <div class="top-row">
             <img :src="robotOrgans.head.src"/>
@@ -63,11 +64,11 @@
 
 import robotParts from '../data/parts';
 import PartSelector from './PartSelector'
-
+import CollapsibleSection from '../shared/CollapsibleSection'
 
 
 export default {
-    components: {PartSelector},
+    components: {PartSelector, CollapsibleSection},
     name: 'RobotBuilder',
     
     data(){
