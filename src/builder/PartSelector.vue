@@ -1,6 +1,17 @@
 <template>
   <div class="part" :class="position">
-    <img @click="showPartInfo" :src="selectedPart.src" title="arm"/>
+      <!-- 
+          Also can implemented using router link 
+      example: -->
+       <router-link :to="{
+           name:'Parts',
+           params: {id: this.selectedPart.id, 
+            partType: this.selectedPart.type},
+           }">
+       <img :src="selectedPart.src" title="arm"/>
+       </router-link>
+      
+    
     <button @click="selectPreviousPart()" class="prev-selector"></button>
     <button @click="selectNextPart()" class="next-selector"></button>
     <span class="sale" v-show="selectedPart.onSale">Sale!</span>
@@ -45,13 +56,7 @@ export default {
   },  
   methods: {
 
-      showPartInfo(){
-          // object syntax in order to pass parameter
-          this.$router.push({name:'Parts',
-           params: {id: this.selectedPart.id, 
-            partType: this.selectedPart.type},
-           })
-      },
+      
       // Passing data to Parent Component
       emitSelectedPart(){
           this.$emit('partSelected', this.selectedPart);
