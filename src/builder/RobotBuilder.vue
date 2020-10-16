@@ -3,7 +3,7 @@
     
     <div class="preview">
       <CollapsibleSection>
-         <!-- Injecting Content Into Child Component from Parent component -->
+         <!-- Injecting Content Into Child Component from Parent component  with slots-->
         <div class="preview-content">
           <div class="top-row">
             <img :src="robotOrgans.head.src"/>
@@ -112,17 +112,17 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .part {
   position: relative;
   width:165px;
   height:165px;
   border: 3px solid #aaa;
 }
-.part {
-  img {
+.part img {
     width:165px;
-  }
+    cursor: pointer;
+  
 }
 .top-row {
   display:flex;
