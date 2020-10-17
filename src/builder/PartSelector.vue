@@ -5,6 +5,7 @@
       example: -->
        <router-link :to="{
            name:'Parts',
+           // params: {id: 'foo', 
            params: {id: this.selectedPart.id, 
             partType: this.selectedPart.type},
            }">
@@ -44,7 +45,7 @@ export default {
   },
   computed: {
     selectedPart() {
-        console.log("Selected Part: ",this.parts[this.selectedPartIndex]);
+      console.log("Selected Part: ",this.parts[this.selectedPartIndex]);
       return this.parts[this.selectedPartIndex];
     },
   },
