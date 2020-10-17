@@ -120,7 +120,7 @@ export default {
           robot.rightArm.cost +
           robot.base.cost;
           // global $stotre
-          this.$store.commit('addRobotToCart', Object.assign({}, robot, { cost }));
+          this.$store.dispatch('addRobotToCartAction', Object.assign({}, robot, { cost }));
           //this.cart.push(Object.assign({}, robot, { cost }));
           this.addedToCart = true;
         
