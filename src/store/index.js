@@ -14,4 +14,11 @@ export default new Vuex.Store({
         }
     },
 
+    // Calculation
+    getters:{
+        cartSaleItems(state){
+            return state.cart.filter(item => item.head.onSale)
+        }
+    }
+
 });
