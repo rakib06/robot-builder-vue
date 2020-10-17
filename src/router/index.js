@@ -16,6 +16,8 @@ import SidebarStandard from '../sidebars/SidebarStandard';
 Vue.use(Router);
 
 export default new Router({
+    mode: "history", // HTML 5 History Mode , This will remove # but need more server configuration
+    // with # vue just send localhost:8080, not other parts
     routes:[{
         path:'/',
         name: 'Home',
