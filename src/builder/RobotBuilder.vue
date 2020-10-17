@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div v-if="robotParts" class="content">
     
     <div class="preview">
       <CollapsibleSection>
@@ -62,14 +62,21 @@
 
 <script>
 
-import robotParts from '../data/parts';
+//import createdHookMixin from './created-hook-mixin';
+//import robotParts from '../data/parts';
 import PartSelector from './PartSelector'
 import CollapsibleSection from '../shared/CollapsibleSection'
 
 
 export default {
+
     components: {PartSelector, CollapsibleSection},
     name: 'RobotBuilder',
+
+    created(){
+      this.$store.dispatch('getParts')
+    },
+
     beforeRouteLeave(to, from, next) {
     if (this.addedToCart) {
       next(true);
@@ -83,7 +90,7 @@ export default {
     
     data(){
         return {
-            robotParts, // AvailableParts       
+            //robotParts, // AvailableParts       
             cart:[],
             // selectedRobot
             robotOrgans: {
@@ -98,7 +105,9 @@ export default {
     },
 
     computed:{
-        
+        robotParts(){
+          return this.$store.state.parts;
+        }
     },
 
     methods:{

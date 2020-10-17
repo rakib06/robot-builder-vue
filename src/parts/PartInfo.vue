@@ -8,10 +8,11 @@
 </template>
 
 <script>
-import parts from '../data/parts'
+import getPartsMixin from './get-parts-mixin';
 
 export default {
     name: "PartInfo",
+    mixins: [getPartsMixin],
     props: //['partType', 'id'], --> this will also work
     {
         //adding a validator using object syntax
@@ -33,7 +34,7 @@ export default {
            // this --> the props
             const {partType, id } = this;
             // id --> string , +id casting to number
-            return parts[partType].find(part=> part.id === +id);
+            return this.parts[partType].find(part=> part.id === +id);
             
 
 
